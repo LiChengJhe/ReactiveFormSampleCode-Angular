@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="w-50">
+      <form [formGroup]="this.form" class="form-horizontal" (ngSubmit)="OnSubmit()" role="form">
+        <div formArrayName="suppliers" *ngFor="let supplier of this.form.controls['suppliers'].value;trackBy: TrackByFn; let i = index;">
+
+          <div class="card" [formGroupName]="i">
+            <div class="card-header">
+              Supplier
+            </div>
+            <div class="card-body">
+
+              <div class="form-row">
+                <div class="form-group col-sm-12">
+                  <h5 style="display:inline">
+                    <span class="badge badge-info col-sm-12 text-left">Company
+
+                      <span style="color:crimson">*</span>
+                    </span>
+                  </h5>
+                  <input formControlName="company" class="form-control" type="text" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-sm-12">
+                  <h5 style="display:inline">
+                    <span class="badge badge-info col-sm-12 text-left">Address
+                      <span style="color:crimson">*</span>
+                    </span>
+                  </h5>
+                  <input formControlName="address" class="form-control" type="text" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-sm-12">
+                  <h5 style="display:inline">
+                    <span class="badge badge-info col-sm-12 text-left">Phone
+                      <span style="color:crimson">*</span>
+                    </span>
+                  </h5>
+                  <input formControlName="phone" class="form-control" type="tel" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button type="button" class="btn btn-info col-sm-6" (click)="this.AddSupplier()">Add</button>
+        <button type="submit" class="btn btn-primary col-sm-6">Submit</button>
+      </form>
+    </div>
+  </div>
+  <br/>
+  <div *ngIf="this.formContent!=null" class="row justify-content-center">
+    <div class="alert alert-warning" role="alert">
+      {{this.formContent}}
+    </div>
+  </div>
+</div>
