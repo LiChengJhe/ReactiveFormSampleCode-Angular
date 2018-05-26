@@ -7,37 +7,38 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
   styleUrls: ['./reactive-form-sample.component.css']
 })
 export class ReactiveFormSampleComponent implements OnInit {
-  form: FormGroup;
-  formContent: string;
-  suppliers: any;
+  Form: FormGroup;
+  FormContent: string;
+  Items: any;
   constructor() { }
   ngOnInit() {
-    this.form = new FormGroup({
-      user: new FormControl(null),
-      suppliers: new FormArray([this.CreateSupplier()]),
+    this.Form = new FormGroup({
+      OrderID: new FormControl(null),
+      Items: new FormArray([this.CreateItem()]),
     });
 
   }
   
-  AddSupplier(): void {
-    this.suppliers = this.form.controls['suppliers'];
-    this.suppliers.push(this.CreateSupplier());
-    console.log(this.suppliers);
+  AddItem(): void {
+    this.Items = this.Form.controls['Items'];
+    this.Items.push(this.CreateItem());
+    console.log(this.Items);
   }
   
-  CreateSupplier(): FormGroup {
+  CreateItem(): FormGroup {
     return new FormGroup({
-      company: new FormControl(null),
-      address: new FormControl(null),
-      phone: new FormControl(null)
+      ItemName: new FormControl(null),
+      Price: new FormControl(null),
+      Quantity: new FormControl(null)
     });
   }
 
   OnSubmit() {
-    this.formContent = JSON.stringify(this.form.value);
+    this.FormContent = JSON.stringify(this.Form.value);
   }
 
   TrackByFn(index, item) {
-    return index; // or item.id
+  console.log(index, item);
+    return index;
   }
 }
