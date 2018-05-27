@@ -16,7 +16,7 @@
         <div formArrayName="Items" *ngFor="let item of this.Form.controls['Items'].value;trackBy: TrackByFn; let i = index;">
 
           <div class="card" [formGroupName]="i">
-            <div class="card-header">
+            <div class="card-header text-white bg-info">
                 {{'Item['+i+']'}}
             </div>
             <div class="card-body">
@@ -58,7 +58,7 @@
 
           </div>
         </div>
-        <button type="button" class="btn btn-info col-sm-6" (click)="this.AddItem()">Add</button>
+        <button type="button" class="btn btn-secondary col-sm-6" (click)="this.AddItem()">Add</button>
         <button type="submit" class="btn btn-primary col-sm-6">Submit</button>
       </form>
     </div>
