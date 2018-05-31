@@ -8,7 +8,6 @@ export enum Protocol {
 }
 
 export enum ConnSource {
-    OAuth2Server,
     ResourceServer
 }
 
@@ -47,7 +46,6 @@ export class WebApiConnection {
 export class WebApiManagerService {
     private _Conns: Map<ConnSource, WebApiConnection> = new Map<ConnSource, WebApiConnection>();
     constructor() {
-        this._Conns.set(ConnSource.OAuth2Server, new WebApiConnection('localhost:11625', 'OAuth2'));
         this._Conns.set(ConnSource.ResourceServer, new WebApiConnection('localhost:58982', 'api'));
 
     }
